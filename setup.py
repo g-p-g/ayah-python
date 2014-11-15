@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name = 'are-you-a-human',
-    version = '1.0.6',
+    version = '2.0',
     author = 'ayah',
     author_email = 'gp@coinapult.com',
     maintainer = 'Guilherme Polo',
