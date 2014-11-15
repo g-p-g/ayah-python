@@ -1,3 +1,4 @@
+import json
 import urllib
 import urllib2
 
@@ -35,13 +36,12 @@ class Ayah(object):
         }
         values = urllib.urlencode(data)
         response = urllib2.urlopen(self.config['scoring_url'], values)
-        result = False
+        success = False
         if response.code == 200:
             content = response.readline()
-            print '>>>', content
-            dict = eval(content)  # XXX
-            result = (int(dict['status_code']) == 1)
-        return result
+            data = json.loads(content)
+            success = (data['status_code'] == 1)
+        return success
 
     def record_conversion(self, session_secret):
         """
